@@ -1,9 +1,32 @@
 from mtcnn import MTCNN
 import cv2
+import sys
+import base64
+
+
+def base64_to_image(base64_string, output_file):
+    # Decode the base64 string
+    image_data = base64.b64decode(base64_string)
+    
+    # Write the decoded data to a file
+    with open(output_file, 'wb') as f:
+        f.write(image_data)
+
+# Example base64 encoded string
+
+
+# Convert base64 string to image
+
+# Read the base64 string from stdin
+base64_string = sys.stdin.read()
+print("HI FROM PYTHON",base64_string)
+base64_to_image(base64_string, 'output_image.jpg')  # Provide output file path with desired image format
+
+
 
 detector = MTCNN()
 
-img = cv2.imread('images/vk.jpg')
+img = cv2.imread('output_image.jpg')
 
 output = detector.detect_faces(img)
 #[{},{}...{}]
